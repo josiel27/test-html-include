@@ -58,74 +58,13 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<![endif]-->
   <script src="https://www.w3schools.com/lib/w3.js"></script>
-  <script>
-    function includeHTML() {
-      var z, i, elmnt, file, xhttp;
-      /*loop through a collection of all HTML elements:*/
-      z = document.getElementsByTagName("*");
-      for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("w3-include-html");
-        if (file) {
-          /*make an HTTP request using the attribute value as the file name:*/
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-              if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-              if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
-              /*remove the attribute, and call this function once more:*/
-              elmnt.removeAttribute("w3-include-html");
-              includeHTML();
-            }
-          }
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          /*exit the function:*/
-          return;
-        }
-      }
-    };
-  </script>
 </head>
 
 <body>
   <div class="page-wrap">
 
     <!-- header -->
-    <header class="header header--fixed">
-      <div class="container">
-        <div class="header__inner">
-          <div class="header__logo"><a href="index.html"><img
-                src="assets/img/logo.png"
-                alt=""
-              /></a></div>
-          <div class="header__menu">
-
-            <!-- onepage-nav -->
-            <nav class="onepage-nav">
-
-              <!-- onepage-menu -->
-              <ul class="onepage-menu">
-                <li class="current-menu-item"><a href="#id-1">Home</a>
-                </li>
-                <li><a href="#id-2">About</a>
-                </li>
-                <li><a href="#id-3">Portfolio</a>
-                </li>
-                <li><a href="#id-4">Blog</a>
-                </li>
-                <li><a href="#id-5">Contact</a>
-                </li>
-              </ul><!-- onepage-menu -->
-
-              <div class="navbar-toggle"><span></span><span></span><span></span></div>
-            </nav><!-- End / onepage-nav -->
-
-          </div>
-        </div>
-      </div>
-    </header><!-- End / header -->
+    <div w3-include-html="./src/header/header.html"></div>
 
     <!-- content -->
     <div w3-include-html="./src/content/content.html"></div>
@@ -134,6 +73,7 @@
     <div w3-include-html="./src/footer/footer.html"></div>
 
   </div>
+
   <!-- Vendors-->
   <script
     type="text/javascript"
@@ -185,7 +125,7 @@
     src="assets/js/main.js"
   ></script>
   <script>
-    w3.includeHTML();
+    includeHTML();
   </script>
 </body>
 
