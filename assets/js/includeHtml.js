@@ -1,4 +1,5 @@
-function includeHTML() {
+(function () {
+
   var z, i, elmnt, file, xhttp;
   /*loop through a collection of all HTML elements:*/
   z = document.getElementsByTagName("*");
@@ -24,4 +25,4 @@ function includeHTML() {
       return;
     }
   }
-};
+});
